@@ -1,12 +1,16 @@
 // Set constraints for the video stream
-var constraints = { video: { facingMode: "environment" }, audio: false };
+// "user" => Front camera
+// "environment" => Back camera
+var constraints = { video: { facingMode: "user" }, audio: false };
 var track = null;
 
 // Define constants
-const cameraView = document.querySelector("#camera--view"),
-    cameraOutput = document.querySelector("#camera--output"),
-    cameraSensor = document.querySelector("#camera--sensor"),
-    cameraTrigger = document.querySelector("#camera--trigger");
+// Get the element in the document with id="camera-view", "camera-device", "photo-display", "take-photo-button"
+const
+    cameraView = document.querySelector("#camera-view"),
+    cameraDevice = document.querySelector("#camera-device"),
+    cameraDisplay = document.querySelector("#photo-display"),
+    takePhotoButton = document.querySelector("#take-photo-button");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -17,19 +21,20 @@ function cameraStart() {
             cameraView.srcObject = stream;
         })
         .catch(function(error) {
-            console.error("Oops. Something is broken.", error);
+            console.error("Error happened.", error);
         });
 }
 
-// Take a picture when cameraTrigger is tapped
-cameraTrigger.onclick = function() {
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/webp");
-    cameraOutput.classList.add("taken");
-    // track.stop();
+// Take a photo when takePhotoButton is clicked
+takePhotoButton.onclick = function() {
+    cameraDevice.width = cameraView.videoWidth;
+    cameraDevice.height = cameraView.videoHeight;
+    cameraDevice.getContext("2d").drawImage(cameraView, 0, 0);
+    cameraDisplay.src = cameraDevice.toDataURL("image/webp");
+    cameraDisplay.classList.add("photo-taken");
 };
 
-// Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
+// Start the camera and video streaming when the window loads
+// 1st parameter: Event type
+// 2nd parameter:Function to be called when the event occurs
+window.addEventListener("load", cameraStart);
