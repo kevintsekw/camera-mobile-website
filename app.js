@@ -23,7 +23,7 @@ function cameraStart() {
         });
     }
 
-    var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
+    const constraints = { video: (frontCamera? "user" : "environment"), audio: false };
 
     navigator.mediaDevices
         .getUserMedia(constraints)
