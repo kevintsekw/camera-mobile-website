@@ -18,7 +18,7 @@ function cameraStart() {
 // "environment" => Back camera
 
     if (typeof currentStream !== 'undefined') {
-        stream.getTracks().forEach(track => {
+        currentStream.getTracks().forEach(track => {
             track.stop();
         });
     }
