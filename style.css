@@ -1,44 +1,46 @@
 html, body{
-  margin: 0;
-  padding: 0;
-  height: 50%;
-  width: 50%;
+  margin: 0px;
+  padding: 0px;
 }
 
-#camera, #camera--view, #camera--sensor, #camera--output{
-    position: fixed;
+/*
+Style the element with id="camera", "camera-view", "camera-device", "photo-display"
+*/
+#camera, #camera-view, #camera-device, #photo-display{
+    position: fixed; /* Position of element is relative to the viewport */
     height: 100%;
     width: 100%;
-    object-fit: cover;
 }
 
-#camera--view, #camera--sensor, #camera--output{
+/*
+Style the element with id="camera-view", "camera-device", "photo-display"
+*/
+#camera-view, #camera-device, #photo-display{
     transform: scaleX(-1);
-    filter: FlipH;
 }
 
-#camera--trigger{
+/*
+Style the element with id="take-photo-button"
+*/
+#take-photo-button{
     width: 200px;
     background-color: black;
     color: white;
-    font-size: 16px;
     border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
+    border: 3px solid red;;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
     position: fixed;
     bottom: 30px;
     left: calc(50% - 100px);
 }
 
-.taken{
-    height: 100px!important;
-    width: 100px!important;
-    transition: all 0.5s ease-in;
-    border: solid 3px white;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    top: 100px;
-    right: 100px;
-    z-index: 2;
+/*
+Class "photo-taken", which is added to "cameraOutput" in file "app.js"
+*/
+.photo-taken{
+    height: 100px!important; /* !important => Overrides the predefined height property (e.g., 100%) */
+    width: 100px!important; /* !important => Overrides the predefined width property (e.g., 100%) */
+    top: 20px;
+    right: 20px;
 }
