@@ -11,6 +11,8 @@ const
     takePhotoButton = document.querySelector("#take-photo-button");
     frontCameraButton = document.querySelector("#front-camera-button");
 
+    const constraints = { video: "environment", audio: false };
+
 // Access the device camera and stream to cameraView
 function cameraStart() {
 // Set constraints for the video stream
@@ -24,7 +26,6 @@ function cameraStart() {
     }
 else {
 //    const constraints = { video: (frontCamera? "user" : "environment"), audio: false };
-    const constraints = { video: "environment", audio: false };
 
     navigator.mediaDevices
         .getUserMedia(constraints)
