@@ -1,5 +1,6 @@
 var frontCamera = false;
 var track = null;
+var currentStream;
 
 // Define constants
 // Get the element in the document with id="camera-view", "camera-device", "photo-display", "take-photo-button"
@@ -15,12 +16,17 @@ function cameraStart() {
 // Set constraints for the video stream
 // "user" => Front camera
 // "environment" => Back camera
+
+    if (typeof currentStream !== 'undefined') {
+        stopMediaTracks(currentStream);
+    }
+
     var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
 
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
-            track = stream.getTracks()[0];
+            currentStream = stream;
             cameraView.srcObject = stream;
         })
         .catch(function(error) {
