@@ -1,7 +1,8 @@
-// Set constraints for the video stream
+var frontCamera = true;
+// // Set constraints for the video stream
 // "user" => Front camera
 // "environment" => Back camera
-var constraints = { video: { facingMode: "user" }, audio: false };
+var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
 var track = null;
 
 // Define constants
@@ -11,6 +12,7 @@ const
     cameraDevice = document.querySelector("#camera-device"),
     cameraDisplay = document.querySelector("#photo-display"),
     takePhotoButton = document.querySelector("#take-photo-button");
+    frontCameraButton = document.querySelector("#front-camera-button");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -32,6 +34,16 @@ takePhotoButton.onclick = function() {
     cameraDevice.getContext("2d").drawImage(cameraView, 0, 0);
     cameraDisplay.src = cameraDevice.toDataURL("image/webp");
     cameraDisplay.classList.add("photo-taken");
+};
+
+frontCameraButton.onclick = function() { 
+    frontCamera = !frontCamera;
+    if (frontCamera) {
+        frontCameraButton.value = "Back Camera";
+    }
+    else {
+        frontCameraButton.value = "Front Camera";
+    }
 };
 
 // Start the camera and video streaming when the window loads
