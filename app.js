@@ -1,10 +1,3 @@
-//import { FileSaver } from './FileSaver.js';
-/*
-var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-    FileSaver.saveAs(blob, "world.txt");
-*/
-
-
 var frontCamera = false;
 var track = null;
 var currentStream;
