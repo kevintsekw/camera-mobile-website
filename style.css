@@ -7,7 +7,7 @@ html, body{
 
 #camera, #camera--view, #camera--sensor, #camera--output{
     position: fixed;
-    height: 50%;
+    height: 100%;
     width: 50%;
     object-fit: cover;
 }
