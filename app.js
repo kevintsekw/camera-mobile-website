@@ -17,12 +17,14 @@ function cameraStart() {
 // "user" => Front camera
 // "environment" => Back camera
 
-    if (typeof currentStream !== 'undefined') {
+//    if (typeof currentStream !== 'undefined') {
+    if (frontCamera) {
         currentStream.getTracks().forEach(track => {
             track.stop();
         });
+        return;
     }
-
+    else {
     var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
 
     navigator.mediaDevices
@@ -34,6 +36,7 @@ function cameraStart() {
         .catch(function(error) {
             console.error("Error happened.", error);
         });
+    }
 }
 
 // Take a photo when takePhotoButton is clicked
