@@ -1,6 +1,7 @@
 var frontCamera = false;
 var track = null;
 var currentStream;
+const constraints = { video: "environment", audio: false };
 
 // Define constants
 // Get the element in the document with id="camera-view", "camera-device", "photo-display", "take-photo-button"
@@ -11,7 +12,6 @@ const
     takePhotoButton = document.querySelector("#take-photo-button");
     frontCameraButton = document.querySelector("#front-camera-button");
 
-    const constraints = { video: "environment", audio: false };
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -19,12 +19,7 @@ function cameraStart() {
 // "user" => Front camera
 // "environment" => Back camera
 
-    if (typeof currentStream !== 'undefined') {
-        currentStream.getTracks().forEach(track => {
-            track.stop();
-        });
-    }
-else {
+
 //    const constraints = { video: (frontCamera? "user" : "environment"), audio: false };
 
     navigator.mediaDevices
@@ -38,7 +33,7 @@ else {
         .catch(function(error) {
             console.error("Error happened.", error);
         });
-}
+
 }
 
 // Take a photo when takePhotoButton is clicked
