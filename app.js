@@ -18,7 +18,9 @@ function cameraStart() {
 // "environment" => Back camera
 
     if (typeof currentStream !== 'undefined') {
-        stopMediaTracks(currentStream);
+        stream.getTracks().forEach(track => {
+            track.stop();
+        });
     }
 
     var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
