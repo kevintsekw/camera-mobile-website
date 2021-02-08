@@ -1,35 +1,36 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Name of the app -->
-        <title>Camera App</title>
+        <title>Camera Mobile Website</title>
 
         <!-- Link to main style sheet -->
         <link rel="stylesheet" href="style.css"> 
     </head>
     <body>
 
-        <!-- Camera -->
+        <!-- Main content of the HTML -->
         <main id="camera">
 
-            <!-- Camera sensor -->
-            <canvas id="camera--sensor"></canvas>
+            <!-- Camera device -->
+            <!-- canvas: Area for drawing graphics on a web page -->
+            <canvas id="camera-device"></canvas>
             
             <!-- Camera view -->
-            <video id="camera--view" autoplay playsinline></video>
+            <!-- Play the video streaming in "camera-view" -->
+            <video id="camera-view" autoplay playsinline></video>
             
-            <!-- Camera output -->
-            <img src="//:0" alt="" id="camera--output">
+            <!-- Photo display -->
+            <img alt="" id="photo-display">
 
-            <!-- Camera trigger -->
-            <button id="camera--trigger">Take a picture</button>
+            <!-- Take photo button -->
+            <button id="take-photo-button">Take Photo</button>
 
         </main>
 
-        <!-- Reference to your JavaScript file -->
+        <!-- Reference to the JavaScript file -->
         <script src="app.js"></script> 
     </body>
 </html>
