@@ -8,8 +8,6 @@ Style the element with id="camera", "camera-view", "camera-device", "photo-displ
 */
 #camera, #camera-view, #camera-device, #photo-display{
     position: fixed; /* Position of element is relative to the viewport */
-    height: 100%;
-    width: 100%;
 }
 
 /*
