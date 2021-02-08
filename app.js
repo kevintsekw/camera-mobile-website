@@ -22,8 +22,9 @@ function cameraStart() {
             track.stop();
         });
     }
-
-    const constraints = { video: (frontCamera? "user" : "environment"), audio: false };
+else {
+//    const constraints = { video: (frontCamera? "user" : "environment"), audio: false };
+    const constraints = { video: "environment", audio: false };
 
     navigator.mediaDevices
         .getUserMedia(constraints)
@@ -36,6 +37,7 @@ function cameraStart() {
         .catch(function(error) {
             console.error("Error happened.", error);
         });
+}
 }
 
 // Take a photo when takePhotoButton is clicked
