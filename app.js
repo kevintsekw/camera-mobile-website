@@ -1,8 +1,4 @@
-var frontCamera = true;
-// // Set constraints for the video stream
-// "user" => Front camera
-// "environment" => Back camera
-var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
+var frontCamera = false;
 var track = null;
 
 // Define constants
@@ -16,6 +12,11 @@ const
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
+// Set constraints for the video stream
+// "user" => Front camera
+// "environment" => Back camera
+    var constraints = { video: (frontCamera? "user" : "environment"), audio: false };
+
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
@@ -39,10 +40,10 @@ takePhotoButton.onclick = function() {
 frontCameraButton.onclick = function() { 
     frontCamera = !frontCamera;
     if (frontCamera) {
-        frontCameraButton.value = "Back Camera";
+        frontCameraButton.textContent = "Back Camera";
     }
     else {
-        frontCameraButton.value = "Front Camera";
+        frontCameraButton.textContent = "Front Camera";
     }
 };
 
