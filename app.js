@@ -30,7 +30,9 @@ function cameraStart() {
         .then(function(stream) {
             currentStream = stream;
             cameraView.srcObject = stream;
-        })
+      return navigator.mediaDevices.enumerateDevices();
+    })
+    .then(gotDevices)
         .catch(function(error) {
             console.error("Error happened.", error);
         });
