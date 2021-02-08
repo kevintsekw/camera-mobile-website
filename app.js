@@ -45,6 +45,7 @@ frontCameraButton.onclick = function() {
     else {
         frontCameraButton.textContent = "Front Camera";
     }
+    cameraStart
 };
 
 // Start the camera and video streaming when the window loads
