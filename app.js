@@ -47,7 +47,7 @@ function cameraStart() {
             console.error("Error happened.", error);
         });
 */
-navigator.mediaDevices.getUserMedia({video: true})
+navigator.mediaDevices.getUserMedia({video: { facingMode: ("environment") }})
   .then(mediaStream => {
     document.querySelector('video').srcObject = mediaStream;
 
