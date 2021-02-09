@@ -10,7 +10,7 @@ const
     takePhotoButton = document.querySelector("#take-photo-button");
     frontCameraButton = document.querySelector("#front-camera-button");
 
-// Access the device camera and stream to cameraView
+// Access the device camera and stream to cameraDevice
 function cameraStart() {
     // Stop the video streaming before access the media device
     if (typeof currentStream !== 'undefined') {
@@ -31,7 +31,7 @@ function cameraStart() {
         .getUserMedia(constraints)
         .then(function(stream) {
             currentStream = stream;
-            cameraView.srcObject = stream;
+            cameraDevice.srcObject = stream;
         })
         .catch(function(error) {
             console.error("Error happened.", error);
@@ -40,10 +40,14 @@ function cameraStart() {
 
 // If takePhotoButton clicked => Take and display a photo
 takePhotoButton.onclick = function() {
-    cameraDevice.width = cameraView.videoWidth;
-    cameraDevice.height = cameraView.videoHeight;
-    cameraDevice.getContext("2d").drawImage(cameraView, 0, 0);
-    photoDisplay.src = cameraDevice.toDataURL("image/webp");
+//    cameraDevice.width = cameraView.videoWidth;
+//    cameraDevice.height = cameraView.videoHeight;
+//    cameraDevice.getContext("2d").drawImage(cameraView, 0, 0);
+//    photoDisplay.src = cameraDevice.toDataURL("image/webp");
+    cameraView.width = cameraDevice.videoWidth;
+    cameraView.height = cameraDevice.videoHeight;
+    cameraView.getContext("2d").drawImage(cameraDevice, 0, 0);
+    photoDisplay.src = cameraView.toDataURL("image/webp");
     photoDisplay.classList.add("photo-taken");
 
 };
